@@ -1,9 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.List;
 
 class Dag2Vraagstuk1 {
     public static void main(String[] args) {

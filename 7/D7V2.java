@@ -70,13 +70,6 @@ public class D7V2 {
         System.out.println(root.getTotalSize());
         System.out.println(prettyPrintTree(root));
 
-        //get the sizes <= 100000
-//        List<Directory> smallDirectories = root.getDirectoriesByMaxSize(100000);
-//        int result = 0;
-//        for (Directory dir : smallDirectories) {
-//            result += dir.totalSize;
-//        }
-//        return result;
         //find the smallest dir that frees up enough space.
         int totalSpace = 70000000;
         int neededSpace = 30000000;
@@ -117,9 +110,7 @@ public class D7V2 {
     }
 
     private static String getIndent(int indent) {
-        StringBuilder result = new StringBuilder();
-        result.append(" ".repeat(Math.max(0, indent)));
-        return result.toString();
+        return " ".repeat(Math.max(0, indent));
     }
 
 
@@ -176,8 +167,7 @@ public class D7V2 {
         }
 
         public String toString() {
-            String result = directoryName +" (dir, totalSize: "+totalSize+")";
-            return result;
+            return directoryName + " (dir, totalSize: " + totalSize + ")";
         }
 
         public void addDirectory(Directory newDirectory) {

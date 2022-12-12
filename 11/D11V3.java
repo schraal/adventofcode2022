@@ -15,13 +15,13 @@ public class D11V3 {
             System.exit(0);
         } else {
             String inputFile = args[0];
-            if (!Files.exists(Path.of(inputFile))) {
+            if (!Files.exists(Paths.get(inputFile))) {
                 System.out.println("Input file '"+inputFile+"' does not exist");
                 System.exit(0);
             } else {
                 try {
                     List<String> allLines = Files.readAllLines(Paths.get(inputFile));
-                    System.out.println("time: "+(System.currentTimeMillis()-start));
+//                    System.out.println("time: "+(System.currentTimeMillis()-start));
                     long result = doIt(allLines, start);
                     System.out.println(result);
                 } catch (IOException e) {
@@ -44,7 +44,7 @@ public class D11V3 {
 
 
         for (String l : allLines) {
-            String line = l.stripLeading();
+            String line = l.trim();
             if (line.startsWith("Monkey")) {
                 monkeys.add(new Monkey());
             } else if (line.startsWith("Starting items: ")) {
@@ -66,13 +66,13 @@ public class D11V3 {
                 monkeys.get(monkeyIndex).falseMonkey = Integer.parseInt(extractValues(falsePattern, line).get(0));
             } else if (line.isEmpty()) {
                 //next monkey
-                System.out.println(monkeys.get(monkeyIndex));
+//                System.out.println(monkeys.get(monkeyIndex));
                 monkeyIndex++;
             } else {
                 System.out.println("unknown line");
             }
         }
-        System.out.println("time: "+(System.currentTimeMillis()-start));
+//        System.out.println("time: "+(System.currentTimeMillis()-start));
 
         //play rounds
         for (int round = 0; round < 10000; round++) {
@@ -91,15 +91,15 @@ public class D11V3 {
                 monkey.items.clear();
             }
         }
-        System.out.println("time: "+(System.currentTimeMillis()-start));
+//        System.out.println("time: "+(System.currentTimeMillis()-start));
 
-        System.out.println();
+//        System.out.println();
         long[] values = new long[monkeys.size()];
         for (int i = 0 ; i < monkeys.size(); i++) {
             values[i] = monkeys.get(i).numberOfActions;
         }
         Arrays.sort(values);
-        System.out.println(Arrays.toString(values));
+//        System.out.println(Arrays.toString(values));
         return values[values.length-2] * values[values.length-1];
     }
 
